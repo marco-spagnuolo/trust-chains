@@ -28,9 +28,6 @@ https://hyperledger-fabric.readthedocs.io/en/latest/getting_started.html
 
 
 
-
-
-
 ## Start network & monitor network 
 
 **go to commercial-paper directory & start a terminal to monitor network **
@@ -64,7 +61,7 @@ cd /go/src/github.com/marco-spagnuolo/trust-chains/commercial-paper/organization
  
  ./magnetocorpStart.sh
 
-### Terminal 3 digibank **
+### Terminal 3 digibank 
 **Start Digibank node**
 
 ./digibankStart.sh
@@ -102,5 +99,5 @@ exit status 1
 error: failed to populate wallet contents: keystore folder should have contain one file\
 exit status 1
 -->
-**DELETE THE SECOND KEY IN THE DIRECTORY OF THE RELEVANT ORG (IN THE EXAMPLE ORG1 = DIGIBANK)**
-/trust-chains/test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/keystore
+**DELETE THE SECOND KEY IN THE DIRECTORY OF THE RELEVANT ORG (IN THE EXAMPLE ORG1 = DIGIBANK)
+/trust-chains/test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/keystore**
