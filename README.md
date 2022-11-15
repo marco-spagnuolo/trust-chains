@@ -1,5 +1,5 @@
-# trust-chains
-internship project
+# Trust-chains
+ internship project
 
 
 TrustChain is a new system for managing software licenses in networked environments that allows software vendors to delegate the sale, 
@@ -10,7 +10,8 @@ The system is based on Docker microservices that communicate via REST API with H
 
 
 
-TRUST-CHAIN START :
+#Start Project :
+this project was tested & developed on Linux Ubuntu 18
 
 Start network & monitor network 
 
