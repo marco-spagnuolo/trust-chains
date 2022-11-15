@@ -9,16 +9,17 @@ pay-as-you-grow accounting models in an automated and flexible way without relyi
 The system is based on Docker microservices that communicate via REST API with Hyperledger Fabric Blockchain.
 
 ## Technologies used:
--Hyperledger Fabric
--Golang
--Docker
+- Hyperledger Fabric
+- Golang
+- Docker
 
 # Start Project :
 __What is hyperledger Fabric?__
 
 https://hyperledger-fabric.readthedocs.io/en/latest/
 
-__Installation guide__ 
+__Installation guide__
+**please refer only to this official guide **
 
 https://hyperledger-fabric.readthedocs.io/en/latest/getting_started.html
 
