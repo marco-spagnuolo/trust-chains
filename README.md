@@ -18,6 +18,7 @@ https://hyperledger-fabric.readthedocs.io/en/latest/
 __Installation guide__ 
 
 https://hyperledger-fabric.readthedocs.io/en/latest/getting_started.html
+
 ***I advise you to install golang correctly as indicated on the official golang site like this /go/src/github.com/github-username/repo_where_we_are_working***
 
 **This project was tested & developed on Linux Ubuntu 18.04**
