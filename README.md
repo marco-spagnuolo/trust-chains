@@ -1,5 +1,5 @@
 # Trust-chains
- internship project 
+**Internship project** 
 
 
 TrustChain is a new system for managing software licenses in networked environments that allows software vendors to delegate the sale, 
@@ -11,14 +11,24 @@ The system is based on Docker microservices that communicate via REST API with H
 
 
 # Start Project :
-
-this project was tested & developed on Linux Ubuntu 18.04
-
-we will simulate the consumer and the producer of the 5g network with two terminals on the same network for simplicity
-
-https://hyperledger-fabric.readthedocs.io/en/latest/getting_started.html
+__What is hyperledger Fabric?__
 
 https://hyperledger-fabric.readthedocs.io/en/latest/
+
+__Installation guide__ 
+
+https://hyperledger-fabric.readthedocs.io/en/latest/getting_started.html
+***I advise you to install golang correctly as indicated on the official golang site like this /go/src/github.com/github-username/repo_where_we_are_working***
+
+**This project was tested & developed on Linux Ubuntu 18.04**
+
+**We will simulate the consumer and the producer of the 5g network with two terminals on the same network for simplicity.**
+
+
+
+
+
+
 
 ## Start network & monitor network 
 
@@ -30,7 +40,7 @@ cd commercial-paper
 
 ## Setup the first node(Producer):
 
-### Terminal 2 Magnetocorp**
+### Terminal 2 Magnetocorp
 
 **go to commercial-paper/organization/magnetocorp directory & start magnetocorp.sh**
 
@@ -49,9 +59,12 @@ cd /go/src/github.com/marco-spagnuolo/trust-chains/commercial-paper/organization
  ./digibank.sh
 
 ### Terminal 2 Magnetocorp 
+ **Start Magnetocorp node**
+ 
  ./magnetocorpStart.sh
 
 ### Terminal 3 digibank **
+**Start Digibank node**
 
 ./digibankStart.sh
 
@@ -59,6 +72,7 @@ cd /go/src/github.com/marco-spagnuolo/trust-chains/commercial-paper/organization
 
 ./commit.sh
 
+**Ready to go**
 ## SUBMIT ISSUE example :
 
 cd go2 
@@ -72,7 +86,9 @@ webserver with REST is on  --> now wait for get/post request (I suggest to use P
 cd go2 
 go run app.go id 
 
-webserver with REST is on  --> now wait for get/post request (I suggest to use POSTMAN)
+**webserver with REST is on  --> now wait for get/post request (I suggest to use POSTMAN)**
+
+__see pptx file in this repo for more info__
 
 
 ## Troubleshooting: 
