@@ -8,7 +8,10 @@ TrustChain allows you to leverage the decentralization and security of existing 
 pay-as-you-grow accounting models in an automated and flexible way without relying on third parties. 
 The system is based on Docker microservices that communicate via REST API with Hyperledger Fabric Blockchain.
 
-
+## Technologies used:
+-Hyperledger Fabric
+-Golang
+-Docker
 
 # Start Project :
 __What is hyperledger Fabric?__
