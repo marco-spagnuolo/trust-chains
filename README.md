@@ -1,107 +1,214 @@
-# Trust-chains
-**Internship project** 
+# TrustChain Project
+**Internship Project**
 
+TrustChain is a new system for managing software licenses in networked environments. It allows software vendors to delegate the sale, management, and accounting of licenses to smart contracts running on the permissioned Hyperledger Fabric Blockchain. TrustChain leverages the decentralization and security of existing Blockchain infrastructures to manage pay-as-you-grow accounting models in an automated and flexible way without relying on third parties. The system is based on Docker microservices that communicate via REST API with Hyperledger Fabric Blockchain.
 
-TrustChain is a new system for managing software licenses in networked environments that allows software vendors to delegate the sale, 
-management and accounting of licenses to smart contracts running on the permissioned Fabric's Blockchain.
-TrustChain allows you to leverage the decentralization and security of existing Blockchain infrastructures to manage
-pay-as-you-grow accounting models in an automated and flexible way without relying on third parties. 
-The system is based on Docker microservices that communicate via REST API with Hyperledger Fabric Blockchain.
-
-## Technologies used:
+## Technologies Used
 - Hyperledger Fabric
 - Golang
 - Docker
 
-# Start Project :
-__What is hyperledger Fabric?__
+## Starting the Project
 
-https://hyperledger-fabric.readthedocs.io/en/latest/
+### What is Hyperledger Fabric?
+[Hyperledger Fabric Documentation](https://hyperledger-fabric.readthedocs.io/en/latest/)
 
-__Installation guide__
-**please refer only to this official guide **
+### Installation Guide
+**Please refer only to the official guide:**
+[Getting Started with Hyperledger Fabric](https://hyperledger-fabric.readthedocs.io/en/latest/getting_started.html)
 
-https://hyperledger-fabric.readthedocs.io/en/latest/getting_started.html
+**Note:** Ensure that Golang is installed correctly as indicated on the official Golang site, e.g., `/go/src/github.com/github-username/repo_where_we_are_working`.
 
-***I advise you to install golang correctly as indicated on the official golang site like this /go/src/github.com/github-username/repo_where_we_are_working***
+**This project was tested & developed on Linux Ubuntu 18.04.**
 
-**This project was tested & developed on Linux Ubuntu 18.04**
+**We will simulate the consumer and producer of the 5G network with two terminals on the same network for simplicity.**
 
-**We will simulate the consumer and the producer of the 5g network with two terminals on the same network for simplicity.**
+## Starting and Monitoring the Network
+
+1. **Go to the `commercial-paper` directory and start a terminal to monitor the network:**
+
+    ```sh
+    cd commercial-paper
+    ./network-starter.sh
+    /organization/magnetocorp/configuration/cli/monitordocker.sh fabric_test
+    ```
+
+## Setup the First Node (Producer)
+
+### Terminal 2 - Magnetocorp
+
+2. **Go to `commercial-paper/organization/magnetocorp` directory and start `magnetocorp.sh`:**
+
+    ```sh
+    cd /go/src/github.com/marco-spagnuolo/trust-chains/commercial-paper/organization/magnetocorp
+    ./magnetocorp.sh
+    ```
+
+## Setup the Second Node (Consumer)
+
+### Terminal 3 - Digibank
+
+3. **Go to `commercial-paper/organization/digibank` directory and start `digibank.sh`:**
+
+    ```sh
+    cd /go/src/github.com/marco-spagnuolo/trust-chains/commercial-paper/organization/digibank
+    ./digibank.sh
+    ```
+
+### Terminal 2 - Magnetocorp
+
+4. **Start the Magnetocorp node:**
+
+    ```sh
+    ./magnetocorpStart.sh
+    ```
+
+### Terminal 3 - Digibank
+
+5. **Start the Digibank node:**
+
+    ```sh
+    ./digibankStart.sh
+    ```
+
+### Terminal 2 - Magnetocorp
+
+6. **Commit the transaction:**
+
+    ```sh
+    ./commit.sh
+    ```
+
+**Ready to go!**
+
+## Submitting an Issue Example
+
+### Terminal 3 - Digibank
+
+7. **Run the application:**
+
+    ```sh
+    cd go2
+    go run app.go id
+    ```
+
+**Webserver with REST is on – now wait for GET/POST requests (using POSTMAN is suggested).**
+
+### Terminal 3 - Digibank
+
+8. **Run the application:**
+
+    ```sh
+    cd go2
+    go run app.go id
+    ```
+
+**Webserver with REST is on – now wait for GET/POST requests (using POSTMAN is suggested).**
+
+For more information, see the PPTX file in this repository.
+
+## Troubleshooting
+
+- **Error: failed to get network: Failed to create new channel client: event service creation failed: could not get chConfig cache reference: QueryBlockConfig failed: QueryBlockConfig failed: queryChaincode failed: Transaction processing for endorser [localhost:9051]: gRPC Transport Status Code: (2) Unknown. Description: error validating proposal: access denied: channel [mychannel] creator org [Org2MSP]**
+
+    **Solution:** Delete only the `wallet` directory in `IDENTITY/USER/OPERATOR/WALLET`.
+
+- **Error: failed to populate wallet contents: keystore folder should contain one file**
+
+    **Solution:** Delete the second key in the directory of the relevant organization (e.g., Org1 = Digibank):
+
+    ```sh
+    /trust-chains/test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/keystore
+    ```
 
 
+## Additional Setup and Running the Network
 
+### Detailed Steps for Running the Network
 
-## Start network & monitor network 
+1. **Navigate to the `commercial-paper` directory and monitor the network:**
 
-**go to commercial-paper directory & start a terminal to monitor network **
+    ```sh
+    cd commercial-paper
+    ./network-starter.sh
+    /organization/magnetocorp/configuration/cli/monitordocker.sh fabric_test
+    ```
 
-cd commercial-paper
- ./network-starter.sh
- /organization/magnetocorp/configuration/cli/monitordocker.sh fabric_test
+2. **Setting up the Producer Node (Magnetocorp):**
 
-## Setup the first node(Producer):
+    **Terminal 2:**
 
-### Terminal 2 Magnetocorp
+    ```sh
+    cd /go/src/github.com/marco-spagnuolo/trust-chains/commercial-paper/organization/magnetocorp
+    ./magnetocorp.sh
+    ./magnetocorpStart.sh
+    ./commit.sh
+    ```
 
-**go to commercial-paper/organization/magnetocorp directory & start magnetocorp.sh**
+3. **Setting up the Consumer Node (Digibank):**
 
-cd /go/src/github.com/marco-spagnuolo/trust-chains/commercial-paper/organization/magnetocorp
+    **Terminal 3:**
 
-  ./magnetocorp.sh
+    ```sh
+    cd /go/src/github.com/marco-spagnuolo/trust-chains/commercial-paper/organization/digibank
+    ./digibank.sh
+    ./digibankStart.sh
+    ```
 
-## Setup the second node(Consumer):
+### Submitting an Issue Example
 
-### Terminale 3 digibank 
+**Terminal 3 - Digibank:**
 
-**go to commercial-paper/organization/digibank directory & start digibank.sh**
+1. **Run the application in the `go2` directory:**
 
-cd /go/src/github.com/marco-spagnuolo/trust-chains/commercial-paper/organization/digibank
+    ```sh
+    cd go2
+    go run app.go id
+    ```
 
- ./digibank.sh
+    **Webserver with REST is on – now wait for GET/POST requests (using POSTMAN is suggested).**
 
-### Terminal 2 Magnetocorp 
- **Start Magnetocorp node**
- 
- ./magnetocorpStart.sh
+### Additional Resources
 
-### Terminal 3 digibank 
-**Start Digibank node**
+- For more detailed instructions, refer to the PPTX file included in the repository.
+- Always ensure that you are using the correct directories and following the sequence of commands precisely to avoid setup issues.
 
-./digibankStart.sh
+## Troubleshooting Guide
 
-### Terminal 2 Magnetocorp
+- **Error: failed to get network: Failed to create new channel client: event service creation failed: could not get chConfig cache reference: QueryBlockConfig failed: QueryBlockConfig failed: queryChaincode failed: Transaction processing for endorser [localhost:9051]: gRPC Transport Status Code: (2) Unknown. Description: error validating proposal: access denied: channel [mychannel] creator org [Org2MSP]**
 
-./commit.sh
+    **Solution:** Delete only the `wallet` directory in `IDENTITY/USER/OPERATOR/WALLET`.
 
-**Ready to go**
-## SUBMIT ISSUE example :
+    ```sh
+    rm -rf /trust-chains/test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/keystore
+    ```
 
-cd go2 
-go run app.go id 
+- **Error: failed to populate wallet contents: keystore folder should contain one file**
 
-webserver with REST is on  --> now wait for get/post request (I suggest to use POSTMAN)
+    **Solution:** Delete the second key in the directory of the relevant organization (e.g., Org1 = Digibank):
 
+    ```sh
+    rm -rf /trust-chains/test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/keystore/*
+    ```
 
-**Terminale 3 digibank** 
+### Common Issues and Solutions
 
-cd go2 
-go run app.go id 
+- **Issue:** Network monitoring script fails to start.
 
-**webserver with REST is on  --> now wait for get/post request (I suggest to use POSTMAN)**
+    **Solution:** Ensure Docker is running and all necessary containers are up. Restart Docker if necessary and rerun the network starter script.
 
-__see pptx file in this repo for more info__
+- **Issue:** Smart contract deployment fails.
 
+    **Solution:** Check the logs for detailed error messages, ensure all dependencies are correctly installed, and verify that the environment variables are set properly.
 
-## Troubleshooting: 
+- **Issue:** REST API does not respond.
 
-error: failed to get network: Failed to create new channel client: event service creation failed: could not get chConfig cache reference: QueryBlockConfig failed: QueryBlockConfig failed: queryChaincode failed: Transaction processing for endorser [localhost:9051]: gRPC Transport Status Code: (2) Unknown. Description: error validating proposal: access denied: channel [mychannel] creator org [Org2MSP]\
-exit status 1
--->
-**Delete only the wallet dir IN IDENTITY/USER/OPERATOR/WALLET**
+    **Solution:** Confirm that the web server is running, check network configurations, and use tools like POSTMAN to send test requests. Ensure that ports are not blocked by a firewall.
 
-error: failed to populate wallet contents: keystore folder should have contain one file\
-exit status 1
--->
-**DELETE THE SECOND KEY IN THE DIRECTORY OF THE RELEVANT ORG (IN THE EXAMPLE ORG1 = DIGIBANK)
-/trust-chains/test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/keystore**
+## Final Notes
+
+- Regularly consult the official Hyperledger Fabric documentation for updates and best practices.
+- Maintain a clean and organized directory structure to avoid path-related issues.
+- Keep your system and all dependencies updated to the latest stable versions to ensure compatibility and security.
+
+For any additional help or to report issues, refer to the project's issue tracker on GitHub.
